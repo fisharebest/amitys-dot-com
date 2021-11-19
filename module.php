@@ -11,6 +11,7 @@ namespace AmitysDotCom;
 use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Elements\AddressCity;
 use Fisharebest\Webtrees\Elements\AddressCountry;
+use Fisharebest\Webtrees\Elements\AddressFax;
 use Fisharebest\Webtrees\Elements\AddressLine;
 use Fisharebest\Webtrees\Elements\AddressLine1;
 use Fisharebest\Webtrees\Elements\AddressLine2;
@@ -25,6 +26,7 @@ use Fisharebest\Webtrees\Elements\DateValue;
 use Fisharebest\Webtrees\Elements\EmptyElement;
 use Fisharebest\Webtrees\Elements\NameOfRepository;
 use Fisharebest\Webtrees\Elements\NamePersonal;
+use Fisharebest\Webtrees\Elements\PhoneNumber;
 use Fisharebest\Webtrees\Elements\PlaceName;
 use Fisharebest\Webtrees\Elements\SourceDescriptiveTitle;
 use Fisharebest\Webtrees\Elements\SubmitterText;
@@ -196,6 +198,8 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
             'INDI:COMM:URL'    => new AddressWebPage(I18N::translate('URL')),
             'INDI:DATA'        => new EmptyElement(I18N::translate('Data'), ['TEXT' => '1:1']),
             'INDI:DATA:TEXT'   => new SubmitterText(I18N::translate('Text')),
+            'INDI:FAX'         => new AddressFax(I18N::translate('Fax')),
+            'INDI:PHON'        => new PhoneNumber(I18N::translate('Phone')),
             'INDI:NAME:_AKA'   => new NamePersonal(I18N::translate('Also known as'), []),
             'INDI:NAME:_MARNM' => new NamePersonal(I18N::translate('Married name'), []),
             'INDI:WWW'         => new AddressWebPage(I18N::translate('URL')),
@@ -231,6 +235,7 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
                 ['ADDR', '0:M'],
                 ['COMM', '0:M'],
                 ['DATA', '0:M'],
+                ['PHON', '0:M'],
                 ['WWW', '0:M'],
                 ['_BRTM', '0:M'],
                 ['_DNA', '0:M'],
