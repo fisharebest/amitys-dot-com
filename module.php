@@ -84,6 +84,7 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
         View::registerNamespace($this->name(), $this->resourcesFolder() . 'views/');
 
         // Replace an existing view with our own version.
+        View::registerCustomView('::individual-page-title', $this->name() . '::individual-page-title');
         View::registerCustomView('::lists/datatables-attributes', $this->name() . '::lists/datatables-attributes');
 
         $this->bootTagsTrait();

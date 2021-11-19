@@ -1,0 +1,25 @@
+<?php
+
+use Fisharebest\Webtrees\Http\RequestHandlers\UserListPage;
+use Fisharebest\Webtrees\I18N;
+use Fisharebest\Webtrees\Individual;
+use Fisharebest\Webtrees\User;
+use Illuminate\Support\Collection;
+
+/**
+ * @var string           $age
+ * @var Individual       $record
+ * @var Collection<User> $users
+ */
+?>
+
+<?= $record->fullName() ?>, <?= $record->lifespan() ?> <?= $age ?>
+<?php if (preg_match('/\n\d _?EMAIL (.+)/', $record->gedcom(), $match)) : ?>
+    <span title="<?= e($match[1])  ?>">@</span>
+<?php endif ?>
+
+<?php foreach ($users as $user) : ?>
+    — <a href="<?= e(route(UserListPage::class, ['filter' => $user->email()])) ?>">
+        <?= e($user->userName()) ?>
+    </a>
+<?php endforeach ?>
