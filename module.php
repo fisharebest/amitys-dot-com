@@ -9,7 +9,14 @@ declare(strict_types=1);
 namespace AmitysDotCom;
 
 use Fisharebest\Webtrees\Contracts\ElementInterface;
+use Fisharebest\Webtrees\Elements\AddressCity;
+use Fisharebest\Webtrees\Elements\AddressCountry;
 use Fisharebest\Webtrees\Elements\AddressLine;
+use Fisharebest\Webtrees\Elements\AddressLine1;
+use Fisharebest\Webtrees\Elements\AddressLine2;
+use Fisharebest\Webtrees\Elements\AddressLine3;
+use Fisharebest\Webtrees\Elements\AddressPostalCode;
+use Fisharebest\Webtrees\Elements\AddressState;
 use Fisharebest\Webtrees\Elements\AddressWebPage;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Elements\CustomEvent;
@@ -177,6 +184,13 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
             'FAM:DATA:TEXT'    => new SubmitterText(I18N::translate('Text')),
             'FAM:_NMR'         => new CustomFact(I18N::translate('Not married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
             'INDI:ADDR'        => new AddressLine(I18N::translate('Address')),
+            'INDI:*:ADDR:ADR1' => new AddressLine1(I18N::translate('Address line 1')),
+            'INDI:*:ADDR:ADR2' => new AddressLine2(I18N::translate('Address line 2')),
+            'INDI:*:ADDR:ADR3' => new AddressLine3(I18N::translate('Address line 3')),
+            'INDI:*:ADDR:CITY' => new AddressCity(I18N::translate('City')),
+            'INDI:*:ADDR:CTRY' => new AddressCountry(I18N::translate('Country')),
+            'INDI:*:ADDR:POST' => new AddressPostalCode(I18N::translate('Postal code')),
+            'INDI:*:ADDR:STAE' => new AddressState(I18N::translate('State')),
             'INDI:ADDR:URL'    => new AddressWebPage(I18N::translate('URL')),
             'INDI:COMM'        => new CustomElement(I18N::translate('Comment'), ['URL' => '0:1']),
             'INDI:COMM:URL'    => new AddressWebPage(I18N::translate('URL')),
