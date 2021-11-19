@@ -17,6 +17,7 @@ use Fisharebest\Webtrees\Elements\CustomFact;
 use Fisharebest\Webtrees\Elements\DateValue;
 use Fisharebest\Webtrees\Elements\EmptyElement;
 use Fisharebest\Webtrees\Elements\NameOfRepository;
+use Fisharebest\Webtrees\Elements\NamePersonal;
 use Fisharebest\Webtrees\Elements\PlaceName;
 use Fisharebest\Webtrees\Elements\SourceDescriptiveTitle;
 use Fisharebest\Webtrees\Elements\SubmitterText;
@@ -172,26 +173,28 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
     public function customTags(): array
     {
         return [
-            'FAM:DATA'        => new EmptyElement(I18N::translate('Data'), ['TEXT' => '1:1']),
-            'FAM:DATA:TEXT'   => new SubmitterText(I18N::translate('Text')),
-            'FAM:_NMR'        => new CustomFact(I18N::translate('Not married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
-            'INDI:ADDR'       => new AddressLine(I18N::translate('Address')),
-            'INDI:ADDR:URL'   => new AddressWebPage(I18N::translate('URL')),
-            'INDI:COMM'       => new CustomElement(I18N::translate('Comment'), ['URL' => '0:1']),
-            'INDI:COMM:URL'   => new AddressWebPage(I18N::translate('URL')),
-            'INDI:DATA'       => new EmptyElement(I18N::translate('Data'), ['TEXT' => '1:1']),
-            'INDI:DATA:TEXT'  => new SubmitterText(I18N::translate('Text')),
-            'INDI:WWW'        => new AddressWebPage(I18N::translate('URL')),
-            'INDI:_BRTM'      => new CustomEvent(I18N::translate('Brit milah')),
-            'INDI:_BRTM:DATE' => new DateValue(I18N::translate('Date of brit milah')),
-            'INDI:_BRTM:PLAC' => new PlaceName(I18N::translate('Place of brit milah')),
-            'INDI:_DNA'       => new CustomFact(I18N::translate('DNA markers')),
-            'INDI:_HNM'       => new CustomElement(I18N::translate('Hebrew name')),
-            'INDI:_HOL'       => new CustomEvent(I18N::translate('Holocaust')),
-            'INDI:_MTNG'      => new CustomElement(I18N::translate('Mother tongue')),
-            'REPO:NAME:_HEB'  => new NameOfRepository(I18N::translate('Name in Hebrew')),
-            'SOUR:AUTH:NOTE'  => new SubmitterText(I18N::translate('Note')),
-            'SOUR:TITL:_HEB'  => new SourceDescriptiveTitle(I18N::translate('Name in Hebrew')),
+            'FAM:DATA'         => new EmptyElement(I18N::translate('Data'), ['TEXT' => '1:1']),
+            'FAM:DATA:TEXT'    => new SubmitterText(I18N::translate('Text')),
+            'FAM:_NMR'         => new CustomFact(I18N::translate('Not married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
+            'INDI:ADDR'        => new AddressLine(I18N::translate('Address')),
+            'INDI:ADDR:URL'    => new AddressWebPage(I18N::translate('URL')),
+            'INDI:COMM'        => new CustomElement(I18N::translate('Comment'), ['URL' => '0:1']),
+            'INDI:COMM:URL'    => new AddressWebPage(I18N::translate('URL')),
+            'INDI:DATA'        => new EmptyElement(I18N::translate('Data'), ['TEXT' => '1:1']),
+            'INDI:DATA:TEXT'   => new SubmitterText(I18N::translate('Text')),
+            'INDI:NAME:_AKA'   => new NamePersonal(I18N::translate('Also known as'), []),
+            'INDI:NAME:_MARNM' => new NamePersonal(I18N::translate('Married name'), []),
+            'INDI:WWW'         => new AddressWebPage(I18N::translate('URL')),
+            'INDI:_BRTM'       => new CustomEvent(I18N::translate('Brit milah')),
+            'INDI:_BRTM:DATE'  => new DateValue(I18N::translate('Date of brit milah')),
+            'INDI:_BRTM:PLAC'  => new PlaceName(I18N::translate('Place of brit milah')),
+            'INDI:_DNA'        => new CustomFact(I18N::translate('DNA markers')),
+            'INDI:_HNM'        => new CustomElement(I18N::translate('Hebrew name')),
+            'INDI:_HOL'        => new CustomEvent(I18N::translate('Holocaust')),
+            'INDI:_MTNG'       => new CustomElement(I18N::translate('Mother tongue')),
+            'REPO:NAME:_HEB'   => new NameOfRepository(I18N::translate('Name in Hebrew')),
+            'SOUR:AUTH:NOTE'   => new SubmitterText(I18N::translate('Note')),
+            'SOUR:TITL:_HEB'   => new SourceDescriptiveTitle(I18N::translate('Name in Hebrew')),
         ];
     }
 
@@ -219,14 +222,18 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
                 ['_HOL', '0:1'],
                 ['_MTNG', '0:M'],
             ],
+            'INDI:NAME' => [
+                ['_AKA', '0:M'],
+                ['_MARNM', '0:M'],
+            ],
             'REPO:NAME' => [
-                ['_HEB', '0:1']
+                ['_HEB', '0:1'],
             ],
             'SOUR:AUTH' => [
-                ['NOTE', '0:M']
+                ['NOTE', '0:M'],
             ],
             'SOUR:TITL' => [
-                ['_HEB', '0:1']
+                ['_HEB', '0:1'],
             ],
         ];
     }
