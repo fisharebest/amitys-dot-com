@@ -31,6 +31,7 @@ use Fisharebest\Webtrees\Elements\PhoneNumber;
 use Fisharebest\Webtrees\Elements\PlaceName;
 use Fisharebest\Webtrees\Elements\SourceDescriptiveTitle;
 use Fisharebest\Webtrees\Elements\SubmitterText;
+use Fisharebest\Webtrees\Elements\XrefAssociate;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
@@ -218,6 +219,7 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
             'INDI:_MILI'       => new CustomEvent(I18N::translate('Military')),
             'INDI:_MILT'       => new CustomElement(I18N::translate('Military service')),
             'INDI:_MTNG'       => new CustomElement(I18N::translate('Mother tongue')),
+            'INDI:_TODO:ASSO'  => new XrefAssociate(I18N::translate('Associate')),
             'REPO:NAME:_HEB'   => new NameOfRepository(I18N::translate('Name in Hebrew')),
             'SOUR:AUTH:NOTE'   => new SubmitterText(I18N::translate('Note')),
             'SOUR:TITL:_HEB'   => new SourceDescriptiveTitle(I18N::translate('Name in Hebrew')),
@@ -256,6 +258,9 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
                 ['_AKA', '0:M'],
                 ['_HEB', '0:M'],
                 ['_MARNM', '0:M'],
+            ],
+            'INDI:_TODO' => [
+                ['ASSO', '0:M'],
             ],
             'REPO:NAME' => [
                 ['_HEB', '0:1'],
