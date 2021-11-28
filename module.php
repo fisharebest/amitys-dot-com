@@ -11,6 +11,7 @@ namespace AmitysDotCom;
 use Fisharebest\Webtrees\Contracts\ElementInterface;
 use Fisharebest\Webtrees\Elements\AddressCity;
 use Fisharebest\Webtrees\Elements\AddressCountry;
+use Fisharebest\Webtrees\Elements\AddressEmail;
 use Fisharebest\Webtrees\Elements\AddressFax;
 use Fisharebest\Webtrees\Elements\AddressLine;
 use Fisharebest\Webtrees\Elements\AddressLine1;
@@ -188,25 +189,25 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
             'FAM:DATA:TEXT'    => new SubmitterText(I18N::translate('Text')),
             'FAM:_NMR'         => new CustomFact(I18N::translate('Not married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
             'FAM:_SEPR'        => new CustomEvent(I18N::translate('Separation')),
-            'INDI:ADDR'        => new AddressLine(I18N::translate('Address')),
-            'INDI:*:ADDR:ADR1' => new AddressLine1(I18N::translate('Address line 1')),
-            'INDI:*:ADDR:ADR2' => new AddressLine2(I18N::translate('Address line 2')),
-            'INDI:*:ADDR:ADR3' => new AddressLine3(I18N::translate('Address line 3')),
-            'INDI:*:ADDR:CITY' => new AddressCity(I18N::translate('City')),
-            'INDI:*:ADDR:CTRY' => new AddressCountry(I18N::translate('Country')),
-            'INDI:*:ADDR:POST' => new AddressPostalCode(I18N::translate('Postal code')),
-            'INDI:*:ADDR:STAE' => new AddressState(I18N::translate('State')),
             'INDI:*:AGE'       => new AmitysAgeAtEvent(I18N::translate('Age')),
+            'INDI:ADDR'        => new AddressLine(I18N::translate('Address')),
+            'INDI:ADDR:ADR1'   => new AddressLine1(I18N::translate('Address line 1')),
+            'INDI:ADDR:ADR2'   => new AddressLine2(I18N::translate('Address line 2')),
+            'INDI:ADDR:CITY'   => new AddressCity(I18N::translate('City')),
+            'INDI:ADDR:CTRY'   => new AddressCountry(I18N::translate('Country')),
+            'INDI:ADDR:POST'   => new AddressPostalCode(I18N::translate('Postal code')),
+            'INDI:ADDR:STAE'   => new AddressState(I18N::translate('State')),
             'INDI:ADDR:URL'    => new AddressWebPage(I18N::translate('URL')),
             'INDI:COMM'        => new CustomElement(I18N::translate('Comment'), ['URL' => '0:1']),
             'INDI:COMM:URL'    => new AddressWebPage(I18N::translate('URL')),
             'INDI:DATA'        => new EmptyElement(I18N::translate('Data'), ['TEXT' => '1:1']),
             'INDI:DATA:TEXT'   => new SubmitterText(I18N::translate('Text')),
+            'INDI:EMAIL'       => new AddressEmail(I18N::translate('Email')),
             'INDI:FAX'         => new AddressFax(I18N::translate('Fax')),
-            'INDI:PHON'        => new PhoneNumber(I18N::translate('Phone')),
             'INDI:NAME:_AKA'   => new NamePersonal(I18N::translate('Also known as'), []),
             'INDI:NAME:_HEB'   => new NamePersonal(I18N::translate('Name in Hebrew'), []),
             'INDI:NAME:_MARNM' => new NamePersonal(I18N::translate('Married name'), []),
+            'INDI:PHON'        => new PhoneNumber(I18N::translate('Phone')),
             'INDI:WWW'         => new AddressWebPage(I18N::translate('URL')),
             'INDI:_BRTM'       => new CustomEvent(I18N::translate('Brit milah')),
             'INDI:_BRTM:DATE'  => new DateValue(I18N::translate('Date of brit milah')),
