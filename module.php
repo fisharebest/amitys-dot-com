@@ -38,6 +38,8 @@ use Fisharebest\Webtrees\Module\ModuleCustomTagsTrait;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\View;
 
+require_once 'AmitysAgeAtEvent.php';
+
 return new class() extends AbstractModule implements ModuleCustomTagsInterface, ModuleCustomInterface {
     // For every module interface that is implemented, the corresponding trait should also use be used.
     use ModuleCustomTrait;
@@ -194,6 +196,7 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
             'INDI:*:ADDR:CTRY' => new AddressCountry(I18N::translate('Country')),
             'INDI:*:ADDR:POST' => new AddressPostalCode(I18N::translate('Postal code')),
             'INDI:*:ADDR:STAE' => new AddressState(I18N::translate('State')),
+            'INDI:*:AGE'       => new AmitysAgeAtEvent(I18N::translate('Age')),
             'INDI:ADDR:URL'    => new AddressWebPage(I18N::translate('URL')),
             'INDI:COMM'        => new CustomElement(I18N::translate('Comment'), ['URL' => '0:1']),
             'INDI:COMM:URL'    => new AddressWebPage(I18N::translate('URL')),
