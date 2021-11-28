@@ -248,6 +248,8 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
                 ['_DNA', '0:M'],
                 ['_HNM', '0:M'],
                 ['_HOL', '0:1'],
+                ['_MILI', '0:M'],
+                ['_MILT', '0:M'],
                 ['_MTNG', '0:M'],
             ],
             'INDI:NAME' => [
