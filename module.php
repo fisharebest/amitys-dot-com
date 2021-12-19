@@ -16,13 +16,14 @@ use Fisharebest\Webtrees\Elements\AddressFax;
 use Fisharebest\Webtrees\Elements\AddressLine;
 use Fisharebest\Webtrees\Elements\AddressLine1;
 use Fisharebest\Webtrees\Elements\AddressLine2;
-use Fisharebest\Webtrees\Elements\AddressLine3;
 use Fisharebest\Webtrees\Elements\AddressPostalCode;
 use Fisharebest\Webtrees\Elements\AddressState;
 use Fisharebest\Webtrees\Elements\AddressWebPage;
 use Fisharebest\Webtrees\Elements\CustomElement;
 use Fisharebest\Webtrees\Elements\CustomEvent;
 use Fisharebest\Webtrees\Elements\CustomFact;
+use Fisharebest\Webtrees\Elements\CustomFamilyEvent;
+use Fisharebest\Webtrees\Elements\CustomIndividualEvent;
 use Fisharebest\Webtrees\Elements\DateValue;
 use Fisharebest\Webtrees\Elements\EmptyElement;
 use Fisharebest\Webtrees\Elements\NameOfRepository;
@@ -189,7 +190,7 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
             'FAM:DATA'         => new EmptyElement(I18N::translate('Data'), ['TEXT' => '1:1']),
             'FAM:DATA:TEXT'    => new SubmitterText(I18N::translate('Text')),
             'FAM:_NMR'         => new CustomFact(I18N::translate('Not married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
-            'FAM:_SEPR'        => new CustomEvent(I18N::translate('Separation')),
+            'FAM:_SEPR'        => new CustomFamilyEvent(I18N::translate('Separation')),
             'INDI:*:AGE'       => new AmitysAgeAtEvent(I18N::translate('Age')),
             'INDI:ADDR'        => new AddressLine(I18N::translate('Address')),
             'INDI:ADDR:ADR1'   => new AddressLine1(I18N::translate('Address line 1')),
@@ -210,14 +211,14 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
             'INDI:NAME:_MARNM' => new NamePersonal(I18N::translate('Married name'), []),
             'INDI:PHON'        => new PhoneNumber(I18N::translate('Phone')),
             'INDI:WWW'         => new AddressWebPage(I18N::translate('URL')),
-            'INDI:_BRTM'       => new CustomEvent(I18N::translate('Brit milah')),
+            'INDI:_BRTM'       => new CustomIndividualEvent(I18N::translate('Brit milah')),
             'INDI:_BRTM:DATE'  => new DateValue(I18N::translate('Date of brit milah')),
             'INDI:_BRTM:PLAC'  => new PlaceName(I18N::translate('Place of brit milah')),
             'INDI:_DNA'        => new CustomFact(I18N::translate('DNA markers')),
             'INDI:_HNM'        => new CustomElement(I18N::translate('Hebrew name')),
-            'INDI:_HOL'        => new CustomEvent(I18N::translate('Holocaust')),
-            'INDI:_MILI'       => new CustomEvent(I18N::translate('Military')),
-            'INDI:_MILT'       => new CustomElement(I18N::translate('Military service')),
+            'INDI:_HOL'        => new CustomIndividualEvent(I18N::translate('Holocaust')),
+            'INDI:_MILI'       => new CustomIndividualEvent(I18N::translate('Military')),
+            'INDI:_MILT'       => new CustomIndividualEvent(I18N::translate('Military service')),
             'INDI:_MTNG'       => new CustomElement(I18N::translate('Mother tongue')),
             'INDI:_TODO:ASSO'  => new XrefAssociate(I18N::translate('Associate')),
             'REPO:NAME:_HEB'   => new NameOfRepository(I18N::translate('Name in Hebrew')),
