@@ -33,6 +33,7 @@ use Fisharebest\Webtrees\Elements\PlaceName;
 use Fisharebest\Webtrees\Elements\SourceDescriptiveTitle;
 use Fisharebest\Webtrees\Elements\SubmitterText;
 use Fisharebest\Webtrees\Elements\XrefAssociate;
+use Fisharebest\Webtrees\Elements\XrefSource;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
@@ -41,7 +42,7 @@ use Fisharebest\Webtrees\Module\ModuleCustomTagsTrait;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
 use Fisharebest\Webtrees\View;
 
-require_once 'AmitysAgeAtEvent.php';
+require_once __DIR__ . '/AmitysAgeAtEvent.php';
 
 return new class() extends AbstractModule implements ModuleCustomTagsInterface, ModuleCustomInterface {
     // For every module interface that is implemented, the corresponding trait should also use be used.
@@ -117,13 +118,13 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
         switch ($language) {
             case 'da':
                 return [
-                    'Mother tongue' => 'Modersmål',
                     '%s&nbsp;CE'    => '%s (juliansk)',
-                    'Youth'         => 'Ungdom',
-                    'Maiden'        => 'Jomfru',
-                    'Woman'         => 'Kvinde',
                     'Child'         => 'Barn',
+                    'Maiden'        => 'Jomfru',
+                    'Mother tongue' => 'Modersmål',
+                    'Woman'         => 'Kvinde',
                     'Young'         => 'Unge',
+                    'Youth'         => 'Ungdom',
                 ];
 
             case 'en-AU':
@@ -135,13 +136,13 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
 
             case 'fi':
                 return [
-                    'Mother tongue' => 'Äidinkieli',
                     '%s&nbsp;CE'    => '%s (juliaani)',
-                    'Youth'         => 'Nuorukainen',
-                    'Maiden'        => 'Neitsyt',
-                    'Woman'         => 'Nainen',
                     'Child'         => 'Lapsi',
+                    'Maiden'        => 'Neitsyt',
+                    'Mother tongue' => 'Äidinkieli',
+                    'Woman'         => 'Nainen',
                     'Young'         => 'Nuori',
+                    'Youth'         => 'Nuorukainen',
                 ];
 
             case 'fr':
@@ -152,24 +153,24 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
 
             case 'he':
                 return [
-                    'Mother tongue' => 'שפת אם',
                     '%s&nbsp;CE'    => '%s (יוליאני)',
-                    'Youth'         => 'בחור',
-                    'Maiden'        => 'בתולה',
-                    'Woman'         => 'אשה',
                     'Child'         => 'ילד',
+                    'Maiden'        => 'בתולה',
+                    'Mother tongue' => 'שפת אם',
+                    'Woman'         => 'אשה',
                     'Young'         => 'צעיר',
+                    'Youth'         => 'בחור',
                 ];
 
             case 'sv':
                 return [
-                    'Mother tongue' => 'Modersmål',
                     '%s&nbsp;CE'    => '%s (juliansk)',
-                    'Youth'         => 'Yngling',
-                    'Maiden'        => 'Jungfru',
-                    'Woman'         => 'Kvinna',
                     'Child'         => 'Barn',
+                    'Maiden'        => 'Jungfru',
+                    'Mother tongue' => 'Modersmål',
+                    'Woman'         => 'Kvinna',
                     'Young'         => 'Yngling',
+                    'Youth'         => 'Yngling',
                 ];
 
             default:
@@ -187,7 +188,7 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
     public function customTags(): array
     {
         return [
-            'FAM:DATA'         => new EmptyElement(I18N::translate('Data'), ['TEXT' => '1:1']),
+            'FAM:DATA'         => new EmptyElement(I18N::translate('Data'), ['DATE' => '0:1', 'TEXT' => '1:1', 'SOUR' => '0:M']),
             'FAM:DATA:TEXT'    => new SubmitterText(I18N::translate('Text')),
             'FAM:_NMR'         => new CustomFact(I18N::translate('Not married'), ['NOTE' => '0:M', 'SOUR' => '0:M']),
             'FAM:_SEPR'        => new CustomFamilyEvent(I18N::translate('Separation')),
@@ -202,7 +203,7 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
             'INDI:ADDR:URL'    => new AddressWebPage(I18N::translate('URL')),
             'INDI:COMM'        => new CustomElement(I18N::translate('Comment'), ['URL' => '0:1']),
             'INDI:COMM:URL'    => new AddressWebPage(I18N::translate('URL')),
-            'INDI:DATA'        => new EmptyElement(I18N::translate('Data'), ['TEXT' => '1:1']),
+            'INDI:DATA'        => new EmptyElement(I18N::translate('Data'), ['DATE' => '0:1', 'TEXT' => '1:1', 'SOUR' => '0:M']),
             'INDI:DATA:TEXT'   => new SubmitterText(I18N::translate('Text')),
             'INDI:EMAIL'       => new AddressEmail(I18N::translate('Email')),
             'INDI:FAX'         => new AddressFax(I18N::translate('Fax')),
