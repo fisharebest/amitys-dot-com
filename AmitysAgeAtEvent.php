@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Tree;
  */
 class AmitysAgeAtEvent extends AgeAtEvent
 {
-    protected const KEYWORDS = ['YOUTH', 'MAIDEN', 'WOMAN', 'YOUNG'] + parent::KEYWORDS;
+    protected const KEYWORDS = ['CHILD', 'MAIDEN', 'WOMAN', 'YOUNG', 'YOUTH'] + parent::KEYWORDS;
 
     /**
      * Display the value of this type of element.
@@ -43,8 +43,8 @@ class AmitysAgeAtEvent extends AgeAtEvent
         $canonical = $this->canonical($value);
 
         switch ($canonical) {
-            case 'YOUTH':
-                return I18N::translate('Youth');
+            case 'CHILD':
+                return I18N::translate('Child');
 
             case 'MAIDEN':
                 return I18N::translate('Maiden');
@@ -54,6 +54,9 @@ class AmitysAgeAtEvent extends AgeAtEvent
 
             case 'YOUNG':
                 return I18N::translate('Young');
+
+            case 'YOUTH':
+                return I18N::translate('Youth');
         }
 
         return parent::value($value, $tree);
