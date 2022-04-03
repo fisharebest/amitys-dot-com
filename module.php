@@ -20,7 +20,6 @@ use Fisharebest\Webtrees\Elements\AddressPostalCode;
 use Fisharebest\Webtrees\Elements\AddressState;
 use Fisharebest\Webtrees\Elements\AddressWebPage;
 use Fisharebest\Webtrees\Elements\CustomElement;
-use Fisharebest\Webtrees\Elements\CustomEvent;
 use Fisharebest\Webtrees\Elements\CustomFact;
 use Fisharebest\Webtrees\Elements\CustomFamilyEvent;
 use Fisharebest\Webtrees\Elements\CustomIndividualEvent;
@@ -33,23 +32,18 @@ use Fisharebest\Webtrees\Elements\PlaceName;
 use Fisharebest\Webtrees\Elements\SourceDescriptiveTitle;
 use Fisharebest\Webtrees\Elements\SubmitterText;
 use Fisharebest\Webtrees\Elements\XrefAssociate;
-use Fisharebest\Webtrees\Elements\XrefSource;
 use Fisharebest\Webtrees\I18N;
 use Fisharebest\Webtrees\Module\AbstractModule;
 use Fisharebest\Webtrees\Module\ModuleCustomInterface;
-use Fisharebest\Webtrees\Module\ModuleCustomTagsInterface;
-use Fisharebest\Webtrees\Module\ModuleCustomTagsTrait;
 use Fisharebest\Webtrees\Module\ModuleCustomTrait;
+use Fisharebest\Webtrees\Registry;
 use Fisharebest\Webtrees\View;
 
 require_once __DIR__ . '/AmitysAgeAtEvent.php';
 
-return new class() extends AbstractModule implements ModuleCustomTagsInterface, ModuleCustomInterface {
+return new class() extends AbstractModule implements ModuleCustomInterface {
     // For every module interface that is implemented, the corresponding trait should also use be used.
     use ModuleCustomTrait;
-    use ModuleCustomTagsTrait {
-        ModuleCustomTagsTrait::boot as public bootTagsTrait;
-    }
 
     /**
      * How should this module be identified in the control panel, etc.?
@@ -103,7 +97,9 @@ return new class() extends AbstractModule implements ModuleCustomTagsInterface, 
         View::registerCustomView('::individual-page-title', $this->name() . '::individual-page-title');
         View::registerCustomView('::lists/datatables-attributes', $this->name() . '::lists/datatables-attributes');
 
-        $this->bootTagsTrait();
+        // Register our custom tags and subtags.
+        Registry::elementFactory()->registerTags($this->customTags());
+        Registry::elementFactory()->registerSubTags($this->customSubTags());
     }
 
     /**
