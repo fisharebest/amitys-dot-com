@@ -28,7 +28,7 @@ use Fisharebest\Webtrees\Tree;
  */
 class AmitysAgeAtEvent extends AgeAtEvent
 {
-    protected const KEYWORDS = ['CHILD', 'MAIDEN', 'WOMAN', 'YOUNG', 'YOUTH'] + parent::KEYWORDS;
+    protected const array KEYWORDS = ['CHILD', 'MAIDEN', 'WOMAN', 'YOUNG', 'YOUTH'] + parent::KEYWORDS;
 
     /**
      * Display the value of this type of element.
