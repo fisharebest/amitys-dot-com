@@ -202,6 +202,7 @@ return new class() extends AbstractModule implements ModuleCustomInterface {
             'INDI:DATA'           => new EmptyElement(I18N::translate('Data'), ['DATE' => '0:1', 'TEXT' => '1:1', 'SOUR' => '0:M']),
             'INDI:DATA:EVEN'      => new CustomElement(I18N::translate('Event')),
             'INDI:DATA:EVEN:DATE' => new DateValue(I18N::translate('Date')),
+            'INDI:DATA:EVEN:PLAC' => new PlaceName(I18N::translate('Place')),
             'INDI:DATA:TEXT'      => new SubmitterText(I18N::translate('Text')),
             'INDI:EMAIL'          => new AddressEmail(I18N::translate('Email')),
             'INDI:FAX'            => new AddressFax(I18N::translate('Fax')),
